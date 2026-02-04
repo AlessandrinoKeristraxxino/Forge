@@ -1,0 +1,18 @@
+disable 'AllInOne';
+able 'Time';
+
+// Basic input
+const name = inp('What is your name? >> ');
+console.text.var('Hello {c.name}!');
+
+// Input with inp.var
+let msg = inp.var('Write a message >> ');
+console.text.var('You wrote: {l.msg}');
+
+// Wait 1 second
+Time.wait(1s);
+console.text.var('After 1 second...');
+
+// Set fps (useful for slower terminals)
+Time.set.fps(20);
+console.text.var('FPS set to 20');

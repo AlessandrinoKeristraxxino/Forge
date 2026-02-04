@@ -1,0 +1,250 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Forge",
+  "scopeName": "source.forge",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#functionNames" },
+    { "include": "#constants" },
+    { "include": "#keywords" },
+    { "include": "#booleans" },
+    { "include": "#specialBooleanOps" },
+    { "include": "#moduleDirectives" },
+    { "include": "#namespaces" },
+    { "include": "#consoleBuiltin" },
+    { "include": "#interpolation" },
+    { "include": "#operators" },
+    { "include": "#punctuation" },
+    { "include": "#identifiers" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.forge",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.forge",
+          "begin": "/\\*",
+          "end": "\\*/"
+        },
+        {
+          "name": "comment.block.forge",
+          "begin": "\\*\\*",
+          "end": "\\*\\*"
+        }
+      ]
+    },
+
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.single.forge",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            { "name": "constant.character.escape.forge", "match": "\\\\." }
+          ]
+        },
+        {
+          "name": "string.quoted.double.forge",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            { "name": "constant.character.escape.forge", "match": "\\\\." }
+          ]
+        }
+      ]
+    },
+
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.forge",
+          "match": "\\b\\d+\\.\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.forge",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    },
+
+    "keywords": {
+      "patterns": [
+        {
+          "name": "storage.type.variable.forge",
+          "match": "\\b(let|var|const)\\b"
+        },
+        {
+          "name": "keyword.control.flow.forge",
+          "match": "\\b(if|elif|else|for|forEach|while|do|break|continue|try|catch|finally|throw|return|async|await)\\b"
+        },
+        {
+          "name": "storage.type.function.forge",
+          "match": "\\bfunc\\b"
+        }
+      ]
+    },
+
+    "functionNames": {
+      "patterns": [
+        {
+          "name": "entity.name.function.forge",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_-]*\\b(?=\\s*\\()"
+        }
+      ]
+    },
+
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.other.forge",
+          "match": "\\b[A-Z][A-Z0-9_]{2,}\\b"
+        }
+      ]
+    },
+
+    "booleans": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.forge",
+          "match": "\\b(True|False)\\b"
+        }
+      ]
+    },
+
+    "specialBooleanOps": {
+      "patterns": [
+        {
+          "name": "keyword.operator.boolean.forge",
+          "match": "(\\?|!)isBoolean\\b"
+        },
+        {
+          "name": "keyword.operator.boolean.forge",
+          "match": "\\bisBoolean\\.(t|f)\\b"
+        },
+        {
+          "name": "keyword.operator.boolean.forge",
+          "match": "\\bisBoolean\\b"
+        }
+      ]
+    },
+
+    "moduleDirectives": {
+      "patterns": [
+        {
+          "name": "keyword.control.import.forge",
+          "match": "\\b(disable|able)\\b"
+        },
+        {
+          "name": "entity.name.type.module.forge",
+          "match": "(?<='|\")\\b(Sys|File|Net|Crypto|Time|Terminal|Math|DateTime|Regex|JSON|Async|AllInOne)\\b(?='|\")"
+        }
+      ]
+    },
+
+    "namespaces": {
+      "patterns": [
+        {
+          "name": "variable.language.namespace.forge",
+          "match": "\\b([vlc])\\b(?=\\.)"
+        },
+        {
+          "name": "support.class.system.forge",
+          "match": "\\b(Sys|File|Net|Crypto|Time|Terminal|Math|DateTime|Regex|JSON|Async)\\b(?=\\.)"
+        }
+      ]
+    },
+
+    "consoleBuiltin": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.forge",
+          "match": "\\bconsole\\.text\\.var\\b"
+        },
+        {
+          "name": "support.function.builtin.forge",
+          "match": "\\binp(\\.var)?\\b(?=\\()"
+        }
+      ]
+    },
+
+    "interpolation": {
+      "patterns": [
+        {
+          "name": "meta.interpolation.forge",
+          "begin": "\\{",
+          "end": "\\}",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.interpolation.begin.forge" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.interpolation.end.forge" }
+          },
+          "patterns": [
+            { "include": "#namespaces" },
+            {
+              "name": "variable.other.forge",
+              "match": "\\b[A-Za-z_][A-Za-z0-9_-]*\\b"
+            },
+            {
+              "name": "keyword.operator.access.forge",
+              "match": "\\."
+            },
+            {
+              "name": "keyword.operator.escape.forge",
+              "match": "\\\\"
+            }
+          ]
+        }
+      ]
+    },
+
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.comparison.forge",
+          "match": "(===|!==|==|!=|<=|>=|<|>)"
+        },
+        {
+          "name": "keyword.operator.assignment.forge",
+          "match": "(=)"
+        },
+        {
+          "name": "keyword.operator.arithmetic.forge",
+          "match": "(\\+|-|x|/|%|§)"
+        }
+      ]
+    },
+
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.separator.forge",
+          "match": "[,;]"
+        },
+        {
+          "name": "punctuation.section.group.begin.forge",
+          "match": "[\\(\\[\\{]"
+        },
+        {
+          "name": "punctuation.section.group.end.forge",
+          "match": "[\\)\\]\\}]"
+        }
+      ]
+    },
+
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "variable.other.forge",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_-]*\\b"
+        }
+      ]
+    }
+  }
+}

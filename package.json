@@ -1,0 +1,120 @@
+{
+  "name": "forge-language-support",
+  "displayName": "Forge Language Support",
+  "description": "Syntax highlighting, diagnostics and runner for the Forge language (disable/able modules, Sys/File/Net/Crypto/Time/Terminal).",
+  "version": "0.0.1",
+  "publisher": "aless",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "keywords": [
+    "forge",
+    "language",
+    "syntax",
+    "highlighting",
+    "linter",
+    "diagnostics",
+    "parser",
+    "interpreter",
+    "terminal",
+    "sys"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aless/forge-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/aless/forge-vscode/issues"
+  },
+  "homepage": "https://github.com/aless/forge-vscode#readme",
+  "activationEvents": [
+    "onLanguage:forge",
+    "onCommand:forge.runFile",
+    "onCommand:forge.toggleDiagnostics"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "forge",
+        "aliases": [
+          "Forge",
+          "forge"
+        ],
+        "extensions": [
+          ".forge"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "forge",
+        "scopeName": "source.forge",
+        "path": "./syntaxes/forge.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "forge.runFile",
+        "title": "Forge: Run File"
+      },
+      {
+        "command": "forge.toggleDiagnostics",
+        "title": "Forge: Toggle Diagnostics"
+      }
+    ],
+    "configuration": {
+      "title": "Forge",
+      "properties": {
+        "forge.diagnostics.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable Forge diagnostics (linting) in the editor."
+        },
+        "forge.runner.outputChannel": {
+          "type": "string",
+          "default": "Forge",
+          "description": "Name of the Output channel used by the Forge runner."
+        },
+        "forge.runner.autoSaveBeforeRun": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically save the active Forge file before running."
+        },
+        "forge.system.allowSysExec": {
+          "type": "boolean",
+          "default": false,
+          "description": "Allow Sys.exec(...) calls to run system commands. Keep disabled for safety."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "build": "npm run compile",
+    "check": "npm run compile && npm run lint",
+    "watch": "tsc -watch -p .",
+    "package": "vsce package",
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
+    "@vscode/vsce": "^2.26.1",
+    "eslint": "^9.1.1",
+    "typescript": "^5.4.5",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.12",
+    "vscode-uri": "^3.1.0"
+  }
+}

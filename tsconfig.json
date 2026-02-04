@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    /* Language and environment */
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+
+    /* Paths */
+    "rootDir": "src",
+    "outDir": "out",
+
+    /* Interop + Node */
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    /* Type safety */
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* DX */
+    "sourceMap": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "out", ".vscode-test", "**/*.spec.ts"]
+}

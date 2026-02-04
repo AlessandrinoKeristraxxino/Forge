@@ -1,0 +1,26 @@
+disable 'AllInOne';
+able 'Terminal';
+
+// Banner
+Terminal.banner('Forge Demo', font: 'big');
+
+// Progress bar
+Terminal.progress.bar(65, width: 40, char: '#');
+
+// Spinner
+Terminal.spinner.custom(['-', '\\', '|', '/'], ms: 80, ticks: 12);
+
+// Table
+Terminal.table.styled([
+  ['ID', 'Task', 'Status'],
+  ['1', 'Setup', 'Done'],
+  ['2', 'Run', 'In Progress']
+], style: 'grid');
+
+// Tree
+Terminal.tree({
+  project: {
+    src: ['extension.ts', 'parser.ts'],
+    tutorials: ['01-basi', '02-controllo-flusso']
+  }
+});

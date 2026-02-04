@@ -1,0 +1,23 @@
+disable 'AllInOne';
+able 'Sys', 'Time', 'File';
+
+// Read RAM info
+let ram = {
+  GB: Sys.chek.ram.GB,
+  comp: Sys.chek.ram.comp
+};
+
+// Choose FPS based on RAM
+if (l.ram.GB <= 4) {
+  Time.set.fps(10);
+} elif (l.ram.GB <= 8) {
+  Time.set.fps(20);
+} else {
+  Time.set.fps(30);
+}
+
+// Build report
+let report = 'Company: {l.ram.comp}, RAM: {l.ram.GB}GB';
+File.write('system-report.txt', l.report);
+
+console.text.var('Report created: {l.report}');

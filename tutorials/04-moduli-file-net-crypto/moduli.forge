@@ -1,0 +1,19 @@
+disable 'AllInOne';
+able 'File', 'Net', 'Crypto';
+
+// FILE
+File.write('demo.txt', 'Hello from Forge');
+let content = File.read('demo.txt');
+console.text.var('File content: {l.content}');
+
+// NET
+let ping = Net.ping('google.com');
+console.text.var('Ping latency: {l.ping.latency}ms');
+
+// CRYPTO
+let sha = Crypto.hash.sha256('password123');
+console.text.var('SHA256: {l.sha}');
+
+let encoded = Crypto.base64.encode('ciao');
+let decoded = Crypto.base64.decode(l.encoded);
+console.text.var('Decoded: {l.decoded}');

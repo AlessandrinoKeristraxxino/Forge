@@ -1,0 +1,18 @@
+disable 'AllInOne';
+able 'Sys', 'Math';
+
+// Single-line comment
+/*
+  C-style multi-line comment
+*/
+** Custom multi-line comment **
+
+// Variables in the 3 stores
+let dog = 'Fuffy Let';
+var dog = 'Fuffy Var';
+const dog = 'Fuffy Const';
+
+// Print from namespaces
+console.text.var(l.dog);
+console.text.var(v.dog);
+console.text.var(c.dog);

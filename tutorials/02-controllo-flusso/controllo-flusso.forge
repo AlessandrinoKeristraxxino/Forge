@@ -1,0 +1,26 @@
+disable 'AllInOne';
+able 'Math';
+
+let value = 'hello';
+
+// Boolean check
+let isBool = chekBoolean(l.value);
+console.text.var({l.isBool});
+
+// Explicit cast
+l.value = isBoolean.f;
+console.text.var({l.value});
+
+// If / elif / else
+if (l.value === False) {
+  console.text.var('value is False');
+} elif (l.value === True) {
+  console.text.var('value is True');
+} else {
+  console.text.var('value is not boolean');
+}
+
+// For loop
+for (let i = 0; i < 3; i = i + 1) {
+  console.text.var({l.i});
+}
